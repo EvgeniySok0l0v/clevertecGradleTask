@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'ru.clevertec.sokalau'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':core')
+}
+
+application{
+    mainClass = 'ru.clevertec.sokalau.App'
+}
+
+tasks.named('jar'){
+    manifest{
+        attributes(
+                'Main-Class' : 'ru.clevertec.sokalau.App',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
